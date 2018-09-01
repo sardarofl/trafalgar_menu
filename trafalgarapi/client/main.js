@@ -41,7 +41,7 @@ module.exports = ".toolbar_spacer {\r\n    flex: 1 1 auto;\r\n  }"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n        <span>Trafalgar Menu Panel</span>\n        <span class=\"toolbar_spacer\"></span>\n        <!-- <button mat-button [routerLink]=\"['/bemenu/login']\" *ngIf=\"!isLoggednIn\">login</button> -->\n        <button mat-button (click)=\"onLogout()\" *ngIf=\"authenticationService.loggedIn()\">logout</button>\n    </mat-toolbar-row>\n\n</mat-toolbar>\n<br>\n<router-outlet (activate)=\"routeChanged()\"></router-outlet>\n\n"
+module.exports = "<!-- <mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n        <span>Trafalgar Menu Panel</span>\n        <span class=\"toolbar_spacer\"></span>\n        <!-- <button mat-button [routerLink]=\"['/bemenu/login']\" *ngIf=\"!isLoggednIn\">login</button> \n        <button mat-button (click)=\"onLogout()\" *ngIf=\"authenticationService.loggedIn()\">logout</button>\n    </mat-toolbar-row>\n\n</mat-toolbar>\n<br> -->\n<router-outlet (activate)=\"routeChanged()\"></router-outlet>\n\n"
 
 /***/ }),
 
@@ -73,8 +73,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(location, router, authenticationService) {
+    function AppComponent(location, router, activatedRouter, authenticationService) {
         this.router = router;
+        this.activatedRouter = activatedRouter;
         this.authenticationService = authenticationService;
         this.title = 'app';
         this.isLoggednIn = false;
@@ -107,7 +108,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_node_modules_angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"]])
+        __metadata("design:paramtypes", [_node_modules_angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -289,7 +290,7 @@ var AccountsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".toolbar_spacer {\r\n    flex: 1 1 auto;\r\n  }"
 
 /***/ }),
 
@@ -300,7 +301,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\"><router-outlet (activate)=\"routeChanged()\"></router-outlet></div>"
+module.exports = "<mat-toolbar color=\"primary\">\r\n        <mat-toolbar-row>\r\n            <span>Trafalgar Menu Panel</span>\r\n            <span class=\"toolbar_spacer\"></span>\r\n            <!-- <button mat-button [routerLink]=\"['/bemenu/login']\" *ngIf=\"!isLoggednIn\">login</button> -->\r\n            <button mat-button (click)=\"onLogout()\" *ngIf=\"authenticationService.loggedIn()\">logout</button>\r\n        </mat-toolbar-row>\r\n    \r\n    </mat-toolbar>\r\n    <br>\r\n    \r\n<div class=\"container\"><router-outlet (activate)=\"routeChanged()\"></router-outlet></div>"
 
 /***/ }),
 
@@ -315,7 +316,9 @@ module.exports = "<div class=\"container\"><router-outlet (activate)=\"routeChan
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BemenuComponent", function() { return BemenuComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/authentication.service */ "./src/app/services/authentication.service.ts");
+/* harmony import */ var _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.././services/authentication.service */ "./src/app/services/authentication.service.ts");
+/* harmony import */ var _node_modules_angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/@angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -327,12 +330,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
 var BemenuComponent = /** @class */ (function () {
-    function BemenuComponent(authenticationService) {
+    function BemenuComponent(location, router, activatedRouter, authenticationService) {
+        this.router = router;
+        this.activatedRouter = activatedRouter;
         this.authenticationService = authenticationService;
+        this.title = 'app';
         this.isLoggednIn = false;
+        if (authenticationService.loggedIn()) {
+            this.isLoggednIn = true;
+            console.log(this.isLoggednIn);
+        }
+        location.subscribe(function (val) { return console.log(val); });
     }
     BemenuComponent.prototype.ngOnInit = function () {
+    };
+    BemenuComponent.prototype.onLogout = function () {
+        var _this = this;
+        this.authenticationService.logout().subscribe(function (data) {
+            localStorage.removeItem('menuToken');
+            _this.router.navigateByUrl('/bemenu/login');
+        });
     };
     BemenuComponent.prototype.routeChanged = function () {
         console.log("working");
@@ -350,7 +370,7 @@ var BemenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./bemenu.component.html */ "./src/app/components/bemenu/bemenu.component.html"),
             styles: [__webpack_require__(/*! ./bemenu.component.css */ "./src/app/components/bemenu/bemenu.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"]])
+        __metadata("design:paramtypes", [_node_modules_angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"]])
     ], BemenuComponent);
     return BemenuComponent;
 }());
@@ -393,6 +413,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FemenuComponent", function() { return FemenuComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_getdata_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/getdata.service */ "./src/app/services/getdata.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -404,9 +425,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var FemenuComponent = /** @class */ (function () {
-    function FemenuComponent(getDataService) {
+    function FemenuComponent(route, activatedRouter, getDataService) {
         var _this = this;
+        this.route = route;
+        this.activatedRouter = activatedRouter;
         this.getDataService = getDataService;
         this.refreshEverything = function () {
             _this.getDataService.getMenu("/api/menus/5b894c834a9fad43c4b0a67e").map(function (response) { return response.json(); }).subscribe(function (data) {
@@ -468,7 +492,7 @@ var FemenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./femenu.component.html */ "./src/app/components/femenu/femenu.component.html"),
             styles: [__webpack_require__(/*! ./femenu.component.css */ "./src/app/components/femenu/femenu.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_getdata_service__WEBPACK_IMPORTED_MODULE_1__["GetdataService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_getdata_service__WEBPACK_IMPORTED_MODULE_1__["GetdataService"]])
     ], FemenuComponent);
     return FemenuComponent;
 }());

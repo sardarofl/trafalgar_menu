@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '../../node_modules/@angular/router';
+import { Router, ActivatedRoute } from '../../node_modules/@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 import { Location } from '../../node_modules/@angular/common';
 
@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'app';
   isLoggednIn = false;
 
-  constructor(location:Location,private router:Router,  private authenticationService:AuthenticationService) { 
+  constructor(location:Location,private router:Router,private activatedRouter:ActivatedRoute,  private authenticationService:AuthenticationService) { 
     if(authenticationService.loggedIn()){
       this.isLoggednIn= true;
       console.log(this.isLoggednIn)

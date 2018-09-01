@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { GetdataService } from '../../services/getdata.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-femenu',
@@ -52,13 +53,15 @@ export class FemenuComponent implements OnInit {
   price20;
   price21;
 
-  constructor(private getDataService:GetdataService) { 
+  constructor(private route:Router, private activatedRouter:ActivatedRoute, private getDataService:GetdataService) { 
+  
     setInterval(() => {
       this.refreshEverything();
     }, 10000);
   }
 
   ngOnInit() {
+  
     this.refreshEverything();
   }
   

@@ -1,1 +1,12 @@
+<mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Trafalgar Menu Panel</span>
+            <span class="toolbar_spacer"></span>
+            <!-- <button mat-button [routerLink]="['/bemenu/login']" *ngIf="!isLoggednIn">login</button> -->
+            <button mat-button (click)="onLogout()" *ngIf="authenticationService.loggedIn()">logout</button>
+        </mat-toolbar-row>
+    
+    </mat-toolbar>
+    <br>
+    
 <div class="container"><router-outlet (activate)="routeChanged()"></router-outlet></div>
