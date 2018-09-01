@@ -1,0 +1,204 @@
+{
+  "name": "menu",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": 
+   {
+        "item1": {
+        "type": "string",
+        "default": "-"
+      },
+      "price1": {
+        "type": "string",
+        "default": "-"
+      },
+      
+        "item2": {
+        "type": "string",
+        "default": "-"
+      },
+      "price2": {
+        "type": "string",
+        "default": "-"
+      },
+      
+        "item3": {
+        "type": "string",
+        "default": "-"
+      },
+      "price3": {
+        "type": "string",
+        "default": "-"
+      },
+      
+      "item4": {
+      "type": "string",
+      "default": "-"
+    },
+    "price4": {
+      "type": "string",
+      "default": "-"
+    },
+      
+    "item5": {
+    "type": "string",
+    "default": "-"
+  },
+  "price5": {
+    "type": "string",
+    "default": "-"
+  },
+      
+  "item6": {
+  "type": "string",
+  "default": "-"
+},
+"price6": {
+  "type": "string",
+  "default": "-"
+},
+      
+"item7": {
+"type": "string",
+"default": "-"
+},
+"price7": {
+"type": "string",
+"default": "-"
+},
+      
+"item8": {
+"type": "string",
+"default": "-"
+},
+"price8": {
+"type": "string",
+"default": "-"
+},
+      
+"item9": {
+"type": "string",
+"default": "-"
+},
+"price9": {
+"type": "string",
+"default": "-"
+},
+      
+"item10": {
+"type": "string",
+"default": "-"
+},
+"price10": {
+"type": "string",
+"default": "-"
+},
+      
+"item11": {
+"type": "string",
+"default": "-"
+},
+"price11": {
+"type": "string",
+"default": "-"
+},
+      
+"item12": {
+"type": "string",
+"default": "-"
+},
+"price12": {
+"type": "string",
+"default": "-"
+},
+      
+"item13": {
+"type": "string",
+"default": "-"
+},
+"price13": {
+"type": "string",
+"default": "-"
+},
+      
+"item14": {
+"type": "string",
+"default": "-"
+},
+"price14": {
+"type": "string",
+"default": "-"
+},
+      
+"item15": {
+"type": "string",
+"default": "-"
+},
+"price15": {
+"type": "string",
+"default": "-"
+},
+      
+"item16": {
+"type": "string",
+"default": "-"
+},
+"price16": {
+"type": "string",
+"default": "-"
+},
+      
+"item17": {
+"type": "string",
+"default": "-"
+},
+"price17": {
+"type": "string",
+"default": "-"
+},
+      
+"item18": {
+"type": "string",
+"default": "-"
+},
+"price18": {
+"type": "string",
+"default": "-"
+},
+      
+"item19": {
+"type": "string",
+"default": "-"
+},
+"price19": {
+"type": "string",
+"default": "-"
+},
+      
+"item20": {
+"type": "string",
+"default": "-"
+},
+"price20": {
+"type": "string",
+"default": "-"
+},
+      
+"item21": {
+"type": "string",
+"default": "-"
+},
+"price21": {
+"type": "string",
+"default": "-"
+}
+    }
+  ,
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

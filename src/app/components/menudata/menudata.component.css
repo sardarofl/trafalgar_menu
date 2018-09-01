@@ -1,0 +1,6 @@
+.items{
+    display: grid;
+    grid-template-columns: auto 3% auto;
+}
+.grid_item{
+}

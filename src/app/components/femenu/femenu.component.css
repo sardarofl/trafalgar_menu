@@ -1,0 +1,43 @@
+.grid_layout{
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-auto-rows: minmax(90px);
+}
+
+.hotbeverages{
+    max-height:40vh;
+}
+.foodandsnacks{
+    height:100vh;
+   }
+.coldbeverages{
+    margin-top:20px;
+    max-height:60vh;
+}
+
+.titlebox{
+    background-image: linear-gradient(#0759a1,#307cc0);
+  color:whitesmoke;
+  font-size:3.0em;
+  font-weight: 500;
+  text-align: center;
+    margin:10px;
+
+}
+
+.table_hotbeverages{
+    width:98%;
+    text-align: center;
+    font-size:2.0vw;
+    margin:10px;
+    font-weight: 500;
+}
+tr:nth-child(even) {
+    background-color: #ffdf84;
+    font-weight: 500;
+}
+tr:nth-child(odd) {
+    background-color: #fff8e5;
+    font-weight: 500;
+}
+

@@ -1,0 +1,11 @@
+'use strict';
+
+module.exports = function(app) {
+  // Install a "/ping" route that returns "pong"
+//   app.get('/bemenu/menudata', function(req, res) {
+//       console.log("GYUS");
+//       //console.log(path.join(__dirname, './client/index.html'));
+//       console.log("GUYS");
+//     res.sendFile(path.join(__dirname, 'index.html'));
+//   });
+};
