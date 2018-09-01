@@ -206,6 +206,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_14__["MatToolbarModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_14__["MatCardModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_14__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_14__["MatSnackBarModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_4__["HttpModule"],
                 node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"]
@@ -415,6 +416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_getdata_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/getdata.service */ "./src/app/services/getdata.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/@angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -427,9 +429,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var FemenuComponent = /** @class */ (function () {
-    function FemenuComponent(route, activatedRouter, getDataService) {
+    function FemenuComponent(snackBar, route, activatedRouter, getDataService) {
         var _this = this;
+        this.snackBar = snackBar;
         this.route = route;
         this.activatedRouter = activatedRouter;
         this.getDataService = getDataService;
@@ -487,13 +491,16 @@ var FemenuComponent = /** @class */ (function () {
     FemenuComponent.prototype.ngOnInit = function () {
         this.refreshEverything();
     };
+    FemenuComponent.prototype.openSnackBar = function () {
+        this.snackBar.open('Message archived');
+    };
     FemenuComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-femenu',
             template: __webpack_require__(/*! ./femenu.component.html */ "./src/app/components/femenu/femenu.component.html"),
             styles: [__webpack_require__(/*! ./femenu.component.css */ "./src/app/components/femenu/femenu.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_getdata_service__WEBPACK_IMPORTED_MODULE_1__["GetdataService"]])
+        __metadata("design:paramtypes", [_node_modules_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_getdata_service__WEBPACK_IMPORTED_MODULE_1__["GetdataService"]])
     ], FemenuComponent);
     return FemenuComponent;
 }());
@@ -560,7 +567,7 @@ var AuthGuard = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".items{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    -ms-grid-columns: auto 3% auto;\r\n        grid-template-columns: auto 3% auto;\r\n}\r\n.grid_item{\r\n}"
+module.exports = ".items{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    -ms-grid-columns: auto 3% auto;\r\n        grid-template-columns: auto 3% auto;\r\n}\r\n\r\n#overlay_loading {\r\n\r\n    position:fixed;\r\n    z-index:5;\r\n     left:0;\r\n     top:0;\r\n    margin:0px;\r\n    width:100%; height:100%;\r\n    background: rgba(54, 25, 25, .7);\r\n    text-align: center;\r\n    color:white;\r\n     }\r\n\r\n#gifspinner{\r\n       position:fixed;\r\n       width:150px;\r\n       height:150px;\r\n       top:50%;\r\n       display: inline-block;\r\n        vertical-align: middle;\r\n        line-height: normal;\r\n    \r\n     }\r\n    "
 
 /***/ }),
 
@@ -571,7 +578,7 @@ module.exports = ".items{\r\n    display: -ms-grid;\r\n    display: grid;\r\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form  id = \"formMenuData\" name =\"formMenuData\" #menuData = \"ngForm\">\n  <h3>Hot Beverages</h3>\n  <label>item1</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item1\" id=\"item1\" placeholder=\"item1\" [(ngModel)]=\"item1\"><div class=\"spacer\"></div><input class=\"grid_item\" type = \"text\" name =\"price1\" id=\"price1\" placeholder=\"price1\" [(ngModel)]=\"price1\"><br>\n  </div>\n    \n  <label>item2</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item2\" id=\"item2\" placeholder=\"item2\" [(ngModel)]=\"item2\"><div class=\"spacer\"></div><input type = \"text\" name =\"price2\" id=\"price2\" placeholder=\"price2\" [(ngModel)]=\"price2\"><br>\n  </div>\n  <label>item3</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item3\" id=\"item3\" placeholder=\"item3\" [(ngModel)]=\"item3\"><div class=\"spacer\"></div><input type = \"text\" name =\"price3\" id=\"price3\" placeholder=\"price3\" [(ngModel)]=\"price3\"><br>\n  </div>\n  <label>item4</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item4\" id=\"item4\" placeholder=\"item4\" [(ngModel)]=\"item4\"><div class=\"spacer\"></div><input type = \"text\" name =\"price4\" id=\"price4\" placeholder=\"price4\" [(ngModel)]=\"price4\"><br>\n  </div>\n    <h3>Cold Beverages</h3>\n  <label>item1</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item5\" id=\"item5\" placeholder=\"item5\" [(ngModel)]=\"item5\"><div class=\"spacer\"></div><input type = \"text\" name =\"price5\" id=\"price5\" placeholder=\"price5\" [(ngModel)]=\"price5\"><br>\n  </div>\n  <label>item2</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item6\" id=\"item6\" placeholder=\"item6\" [(ngModel)]=\"item6\"><div class=\"spacer\"></div><input type = \"text\" name =\"price6\" id=\"price6\" placeholder=\"price6\" [(ngModel)]=\"price6\"><br>\n  </div>\n  <label>item3</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item7\" id=\"item7\" placeholder=\"item7\" [(ngModel)]=\"item7\"><div class=\"spacer\"></div><input type = \"text\" name =\"price7\" id=\"price7\" placeholder=\"price7\" [(ngModel)]=\"price7\"><br>\n  </div>\n  <label>item4</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item8\" id=\"item8\" placeholder=\"item8\" [(ngModel)]=\"item8\"><div class=\"spacer\"></div><input type = \"text\" name =\"price8\" id=\"price8\" placeholder=\"price8\" [(ngModel)]=\"price8\"><br>\n  </div>\n  <label>item5</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item9\" id=\"item9\" placeholder=\"item9\" [(ngModel)]=\"item9\"><div class=\"spacer\"></div><input type = \"text\" name =\"price9\" id=\"price9\" placeholder=\"price9\" [(ngModel)]=\"price9\"><br>\n  </div>\n  <label>item6</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item10\" id=\"item10\" placeholder=\"item10\" [(ngModel)]=\"item10\"><div class=\"spacer\"></div><input type = \"text\" name =\"price10\" id=\"price10\" placeholder=\"price10\" [(ngModel)]=\"price10\"><br>\n  </div>\n    <h3>Food and Snacks</h3>\n  <label>item1</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item11\" id=\"item11\" placeholder=\"item11\" [(ngModel)]=\"item11\"><div class=\"spacer\"></div><input type = \"text\" name =\"price11\" id=\"price11\" placeholder=\"price11\" [(ngModel)]=\"price11\"><br>\n  </div>\n  <label>item2</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item12\" id=\"item12\" placeholder=\"item12\" [(ngModel)]=\"item12\"><div class=\"spacer\"></div><input type = \"text\" name =\"price12\" id=\"price12\" placeholder=\"price12\" [(ngModel)]=\"price12\"><br>\n  </div>\n  <label>item3</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item13\" id=\"item13\" placeholder=\"item13\" [(ngModel)]=\"item13\"><div class=\"spacer\"></div><input type = \"text\" name =\"price13\" id=\"price13\" placeholder=\"price13\" [(ngModel)]=\"price13\"><br>\n  </div>\n  <label>item4</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item14\" id=\"item14\" placeholder=\"item14\" [(ngModel)]=\"item14\"><div class=\"spacer\"></div><input type = \"text\" name =\"price14\" id=\"price14\" placeholder=\"price14\" [(ngModel)]=\"price14\"><br>\n  </div>\n  <label>item5</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item15\" id=\"item15\" placeholder=\"item15\" [(ngModel)]=\"item15\"><div class=\"spacer\"></div><input type = \"text\" name =\"price15\" id=\"price15\" placeholder=\"price15\" [(ngModel)]=\"price15\"><br>\n  </div>\n  <label>item6</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item16\" id=\"item16\" placeholder=\"item16\" [(ngModel)]=\"item16\"><div class=\"spacer\"></div><input type = \"text\" name =\"price16\" id=\"price16\" placeholder=\"price16\" [(ngModel)]=\"price16\"><br>\n  </div>\n  <label>item7</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item17\" id=\"item17\" placeholder=\"item17\" [(ngModel)]=\"item17\"><div class=\"spacer\"></div><input type = \"text\" name =\"price17\" id=\"price17\" placeholder=\"price17\" [(ngModel)]=\"price17\"><br>\n  </div>\n  <label>item8</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item18\" id=\"item18\" placeholder=\"item18\" [(ngModel)]=\"item18\"><div class=\"spacer\"></div><input type = \"text\" name =\"price18\" id=\"price18\" placeholder=\"price18\" [(ngModel)]=\"price18\"><br>\n  </div>\n  <label>item9</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item19\" id=\"item19\" placeholder=\"item19\" [(ngModel)]=\"item19\"><div class=\"spacer\"></div><input type = \"text\" name =\"price19\" id=\"price19\" placeholder=\"price19\" [(ngModel)]=\"price19\"><br>\n  </div>\n  <label>item10</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item20\" id=\"item20\" placeholder=\"item20\" [(ngModel)]=\"item20\"><div class=\"spacer\"></div><input type = \"text\" name =\"price20\" id=\"price20\" placeholder=\"price20\" [(ngModel)]=\"price20\"><br>\n  </div>\n  <label>item11</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item21\" id=\"item21\" placeholder=\"item21\" [(ngModel)]=\"item21\"><div class=\"spacer\"></div><input type = \"text\" name =\"price21\" id=\"price21\" placeholder=\"price21\" [(ngModel)]=\"price21\">\n  </div>\n    \n</form>\n<br>\n<div class=\"center-align\" *ngIf=\"isLoggednIn\"><button mat-raised-button color=\"primary\" (click)=\"submitmenudata();\">Submit</button></div>\n<br><br>\n"
+module.exports = "<div *ngIf=\"submitted\" id=\"overlay_loading\">\n\n    <div id=\"gifspinner\" class=\"preloader-wrapper big active\">\n         <div class=\"spinner-layer spinner-blue\">\n         <div class=\"circle-clipper left\">\n           <div class=\"circle\"></div>\n         </div><div class=\"gap-patch\">\n           <div class=\"circle\"></div>\n         </div><div class=\"circle-clipper right\">\n           <div class=\"circle\"></div>\n         </div>\n       </div>\n    \n    </div>\n    </div>\n\n<form  id = \"formMenuData\" name =\"formMenuData\" #menuData = \"ngForm\">\n  <h3>Hot Beverages</h3>\n  <label>item1</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item1\" id=\"item1\" placeholder=\"item1\" [(ngModel)]=\"item1\"><div class=\"spacer\"></div><input class=\"grid_item\" type = \"text\" name =\"price1\" id=\"price1\" placeholder=\"price1\" [(ngModel)]=\"price1\"><br>\n  </div>\n    \n  <label>item2</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item2\" id=\"item2\" placeholder=\"item2\" [(ngModel)]=\"item2\"><div class=\"spacer\"></div><input type = \"text\" name =\"price2\" id=\"price2\" placeholder=\"price2\" [(ngModel)]=\"price2\"><br>\n  </div>\n  <label>item3</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item3\" id=\"item3\" placeholder=\"item3\" [(ngModel)]=\"item3\"><div class=\"spacer\"></div><input type = \"text\" name =\"price3\" id=\"price3\" placeholder=\"price3\" [(ngModel)]=\"price3\"><br>\n  </div>\n  <label>item4</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item4\" id=\"item4\" placeholder=\"item4\" [(ngModel)]=\"item4\"><div class=\"spacer\"></div><input type = \"text\" name =\"price4\" id=\"price4\" placeholder=\"price4\" [(ngModel)]=\"price4\"><br>\n  </div>\n    <h3>Cold Beverages</h3>\n  <label>item1</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item5\" id=\"item5\" placeholder=\"item5\" [(ngModel)]=\"item5\"><div class=\"spacer\"></div><input type = \"text\" name =\"price5\" id=\"price5\" placeholder=\"price5\" [(ngModel)]=\"price5\"><br>\n  </div>\n  <label>item2</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item6\" id=\"item6\" placeholder=\"item6\" [(ngModel)]=\"item6\"><div class=\"spacer\"></div><input type = \"text\" name =\"price6\" id=\"price6\" placeholder=\"price6\" [(ngModel)]=\"price6\"><br>\n  </div>\n  <label>item3</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item7\" id=\"item7\" placeholder=\"item7\" [(ngModel)]=\"item7\"><div class=\"spacer\"></div><input type = \"text\" name =\"price7\" id=\"price7\" placeholder=\"price7\" [(ngModel)]=\"price7\"><br>\n  </div>\n  <label>item4</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item8\" id=\"item8\" placeholder=\"item8\" [(ngModel)]=\"item8\"><div class=\"spacer\"></div><input type = \"text\" name =\"price8\" id=\"price8\" placeholder=\"price8\" [(ngModel)]=\"price8\"><br>\n  </div>\n  <label>item5</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item9\" id=\"item9\" placeholder=\"item9\" [(ngModel)]=\"item9\"><div class=\"spacer\"></div><input type = \"text\" name =\"price9\" id=\"price9\" placeholder=\"price9\" [(ngModel)]=\"price9\"><br>\n  </div>\n  <label>item6</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item10\" id=\"item10\" placeholder=\"item10\" [(ngModel)]=\"item10\"><div class=\"spacer\"></div><input type = \"text\" name =\"price10\" id=\"price10\" placeholder=\"price10\" [(ngModel)]=\"price10\"><br>\n  </div>\n    <h3>Food and Snacks</h3>\n  <label>item1</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item11\" id=\"item11\" placeholder=\"item11\" [(ngModel)]=\"item11\"><div class=\"spacer\"></div><input type = \"text\" name =\"price11\" id=\"price11\" placeholder=\"price11\" [(ngModel)]=\"price11\"><br>\n  </div>\n  <label>item2</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item12\" id=\"item12\" placeholder=\"item12\" [(ngModel)]=\"item12\"><div class=\"spacer\"></div><input type = \"text\" name =\"price12\" id=\"price12\" placeholder=\"price12\" [(ngModel)]=\"price12\"><br>\n  </div>\n  <label>item3</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item13\" id=\"item13\" placeholder=\"item13\" [(ngModel)]=\"item13\"><div class=\"spacer\"></div><input type = \"text\" name =\"price13\" id=\"price13\" placeholder=\"price13\" [(ngModel)]=\"price13\"><br>\n  </div>\n  <label>item4</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item14\" id=\"item14\" placeholder=\"item14\" [(ngModel)]=\"item14\"><div class=\"spacer\"></div><input type = \"text\" name =\"price14\" id=\"price14\" placeholder=\"price14\" [(ngModel)]=\"price14\"><br>\n  </div>\n  <label>item5</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item15\" id=\"item15\" placeholder=\"item15\" [(ngModel)]=\"item15\"><div class=\"spacer\"></div><input type = \"text\" name =\"price15\" id=\"price15\" placeholder=\"price15\" [(ngModel)]=\"price15\"><br>\n  </div>\n  <label>item6</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item16\" id=\"item16\" placeholder=\"item16\" [(ngModel)]=\"item16\"><div class=\"spacer\"></div><input type = \"text\" name =\"price16\" id=\"price16\" placeholder=\"price16\" [(ngModel)]=\"price16\"><br>\n  </div>\n  <label>item7</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item17\" id=\"item17\" placeholder=\"item17\" [(ngModel)]=\"item17\"><div class=\"spacer\"></div><input type = \"text\" name =\"price17\" id=\"price17\" placeholder=\"price17\" [(ngModel)]=\"price17\"><br>\n  </div>\n  <label>item8</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item18\" id=\"item18\" placeholder=\"item18\" [(ngModel)]=\"item18\"><div class=\"spacer\"></div><input type = \"text\" name =\"price18\" id=\"price18\" placeholder=\"price18\" [(ngModel)]=\"price18\"><br>\n  </div>\n  <label>item9</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item19\" id=\"item19\" placeholder=\"item19\" [(ngModel)]=\"item19\"><div class=\"spacer\"></div><input type = \"text\" name =\"price19\" id=\"price19\" placeholder=\"price19\" [(ngModel)]=\"price19\"><br>\n  </div>\n  <label>item10</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item20\" id=\"item20\" placeholder=\"item20\" [(ngModel)]=\"item20\"><div class=\"spacer\"></div><input type = \"text\" name =\"price20\" id=\"price20\" placeholder=\"price20\" [(ngModel)]=\"price20\"><br>\n  </div>\n  <label>item11</label><br>\n  <div class=\"items\">\n    <input type = \"text\" name =\"item21\" id=\"item21\" placeholder=\"item21\" [(ngModel)]=\"item21\"><div class=\"spacer\"></div><input type = \"text\" name =\"price21\" id=\"price21\" placeholder=\"price21\" [(ngModel)]=\"price21\">\n  </div>\n    \n</form>\n<br>\n<div class=\"center-align\" *ngIf=\"isLoggednIn\"><button mat-raised-button color=\"primary\" (click)=\"submitmenudata();\">Submit</button></div>\n<br><br>\n"
 
 /***/ }),
 
@@ -590,6 +597,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_getdata_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/getdata.service */ "./src/app/services/getdata.service.ts");
 /* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/authentication.service */ "./src/app/services/authentication.service.ts");
 /* harmony import */ var _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../node_modules/@angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../node_modules/@angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -604,9 +612,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var MenudataComponent = /** @class */ (function () {
-    function MenudataComponent(router, getDataService, addDataService, elem, authenticationService) {
+    function MenudataComponent(snackBar, router, getDataService, addDataService, elem, authenticationService) {
         var _this = this;
+        this.snackBar = snackBar;
         this.router = router;
         this.getDataService = getDataService;
         this.addDataService = addDataService;
@@ -658,6 +668,7 @@ var MenudataComponent = /** @class */ (function () {
                 _this.price20 = data['price20'];
                 _this.item21 = data['item21'];
                 _this.price21 = data['price21'];
+                _this.submitted = false;
             });
         };
         if (authenticationService.loggedIn()) {
@@ -667,12 +678,17 @@ var MenudataComponent = /** @class */ (function () {
             this.router.navigate(['/bemenu/login']);
         }
     }
+    MenudataComponent.prototype.openSnackBar = function () {
+        this.snackBar.open('Done');
+    };
     MenudataComponent.prototype.ngOnInit = function () {
+        this.submitted = true;
         this.refreshEverything();
     };
     MenudataComponent.prototype.submitmenudata = function () {
         var _this = this;
         console.log("menu set");
+        this.submitted = true;
         var menudata = { item1: this.item1, price1: this.price1,
             item2: this.item2, price2: this.price2,
             item3: this.item3, price3: this.price3,
@@ -698,7 +714,12 @@ var MenudataComponent = /** @class */ (function () {
         var id = '5b894c834a9fad43c4b0a67e';
         this.addDataService.setMenu("/api/menus/" + id, menudata).subscribe(function (data) {
             console.log(data);
+            console.log();
             _this.refreshEverything();
+            console.log("open snackbar");
+            _this.snackBar.open('Data submitted', 'OK', {
+                duration: 3000
+            });
         });
         console.log(menudata);
     };
@@ -708,7 +729,7 @@ var MenudataComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./menudata.component.html */ "./src/app/components/menudata/menudata.component.html"),
             styles: [__webpack_require__(/*! ./menudata.component.css */ "./src/app/components/menudata/menudata.component.css")]
         }),
-        __metadata("design:paramtypes", [_node_modules_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_getdata_service__WEBPACK_IMPORTED_MODULE_2__["GetdataService"], _services_adddata_service__WEBPACK_IMPORTED_MODULE_1__["AdddataService"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"]])
+        __metadata("design:paramtypes", [_node_modules_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_getdata_service__WEBPACK_IMPORTED_MODULE_2__["GetdataService"], _services_adddata_service__WEBPACK_IMPORTED_MODULE_1__["AdddataService"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"]])
     ], MenudataComponent);
     return MenudataComponent;
 }());
