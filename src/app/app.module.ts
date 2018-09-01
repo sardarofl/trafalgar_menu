@@ -33,9 +33,11 @@ const appRoutes: Routes = [
        { path: '**', redirectTo: 'login' }
     ]
   },
-  { path: 'femenu', component: FemenuComponent}
+  { path: 'femenu', component: FemenuComponent},
+  { path: '**', redirectTo: 'femenu'}
 
 ]
+
 @NgModule({
   declarations: [
     AppComponent,

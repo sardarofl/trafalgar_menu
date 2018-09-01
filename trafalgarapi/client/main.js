@@ -181,7 +181,8 @@ var appRoutes = [
             { path: '**', redirectTo: 'login' }
         ]
     },
-    { path: 'femenu', component: _components_femenu_femenu_component__WEBPACK_IMPORTED_MODULE_7__["FemenuComponent"] }
+    { path: 'femenu', component: _components_femenu_femenu_component__WEBPACK_IMPORTED_MODULE_7__["FemenuComponent"] },
+    { path: '**', redirectTo: 'femenu' }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
