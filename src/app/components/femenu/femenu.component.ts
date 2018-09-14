@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { GetdataService } from '../../services/getdata.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBarModule, MatSnackBar } from '../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-femenu',
@@ -30,6 +31,7 @@ export class FemenuComponent implements OnInit {
   item19;
   item20;
   item21;
+  item22;
 
   price1;
   price2;
@@ -52,8 +54,9 @@ export class FemenuComponent implements OnInit {
   price19;
   price20;
   price21;
+  price22;
 
-  constructor(private route:Router, private activatedRouter:ActivatedRoute, private getDataService:GetdataService) { 
+  constructor(public snackBar:MatSnackBar ,private route:Router, private activatedRouter:ActivatedRoute, private getDataService:GetdataService) { 
   
     setInterval(() => {
       this.refreshEverything();
@@ -65,7 +68,10 @@ export class FemenuComponent implements OnInit {
     this.refreshEverything();
   }
   
-
+  openSnackBar() {
+    this.snackBar.open('Message archived');
+  }
+ 
   refreshEverything = () => {
     this.getDataService.getMenu(`/api/menus/5b894c834a9fad43c4b0a67e`).map(response => response.json()).subscribe(data =>{
       console.log(data);
@@ -91,7 +97,8 @@ export class FemenuComponent implements OnInit {
       this.item19 = data['item19'];this.price19 = data['price19'];
       this.item20 = data['item20'];this.price20 = data['price20'];
       this.item21 = data['item21'];this.price21 = data['price21'];
- 
+      this.item22 = data['item22'];this.price22 = data['price22'];
+
     });
 }
 

@@ -4,6 +4,7 @@ import { isNgTemplate } from '../../../../node_modules/@angular/compiler';
 import { GetdataService } from '../../services/getdata.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Route, Router } from '../../../../node_modules/@angular/router';
+import { MatSnackBar } from '../../../../node_modules/@angular/material';
 declare var $ :any;
 @Component({
   selector: 'app-menudata',
@@ -33,6 +34,7 @@ export class MenudataComponent implements OnInit {
   item19;
   item20;
   item21;
+  item22;
 
   price1;
   price2;
@@ -55,11 +57,14 @@ export class MenudataComponent implements OnInit {
   price19;
   price20;
   price21;
+  price22;
 
   isLoggednIn = false;
 
+  public submitted:boolean;
 
-  constructor(private router:Router, private getDataService:GetdataService, private addDataService:AdddataService, private elem: ElementRef, private authenticationService:AuthenticationService) { 
+
+  constructor(public snackBar:MatSnackBar, private router:Router, private getDataService:GetdataService, private addDataService:AdddataService, private elem: ElementRef, private authenticationService:AuthenticationService) { 
     if(authenticationService.loggedIn()){
       this.isLoggednIn= true;
     }else{
@@ -68,7 +73,12 @@ export class MenudataComponent implements OnInit {
 
   }
 
+  openSnackBar() {
+    this.snackBar.open('Done');
+  }
+
   ngOnInit() {
+    this.submitted=true;
     this.refreshEverything();
   }
 
@@ -97,14 +107,15 @@ export class MenudataComponent implements OnInit {
         this.item19 = data['item19'];this.price19 = data['price19'];
         this.item20 = data['item20'];this.price20 = data['price20'];
         this.item21 = data['item21'];this.price21 = data['price21'];
-   
+        this.item22 = data['item22'];this.price22 = data['price22'];
+        this.submitted=false;
       });
   }
   
   public submitmenudata(): void{
 
     console.log("menu set")
-
+    this.submitted=true;
     const menudata = 
       {item1:this.item1 , price1:this.price1, 
       item2:this.item2 , price2:this.price2,
@@ -126,14 +137,20 @@ export class MenudataComponent implements OnInit {
       item18:this.item18 , price18:this.price18,
       item19:this.item19 , price19:this.price19,
       item20:this.item20 , price20:this.price20,
-      item21:this.item21 , price21:this.price21
-       
+      item21:this.item21 , price21:this.price21,
+      item22:this.item22 , price22:this.price22
+        
     }
       
     let id= '5b894c834a9fad43c4b0a67e';
     this.addDataService.setMenu(`/api/menus/${id}`, menudata).subscribe(data =>{
       console.log(data);
+      console.log();
       this.refreshEverything();
+      console.log("open snackbar");
+      this.snackBar.open('Data submitted', 'OK', {
+        duration: 3000
+      });
     })
 
 

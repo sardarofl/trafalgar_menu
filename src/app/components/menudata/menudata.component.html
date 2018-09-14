@@ -1,3 +1,19 @@
+<div *ngIf="submitted" id="overlay_loading">
+
+    <div id="gifspinner" class="preloader-wrapper big active">
+         <div class="spinner-layer spinner-blue">
+         <div class="circle-clipper left">
+           <div class="circle"></div>
+         </div><div class="gap-patch">
+           <div class="circle"></div>
+         </div><div class="circle-clipper right">
+           <div class="circle"></div>
+         </div>
+       </div>
+    
+    </div>
+    </div>
+
 <form  id = "formMenuData" name ="formMenuData" #menuData = "ngForm">
   <h3>Hot Beverages</h3>
   <label>item1</label><br>
@@ -17,28 +33,29 @@
   <div class="items">
     <input type = "text" name ="item4" id="item4" placeholder="item4" [(ngModel)]="item4"><div class="spacer"></div><input type = "text" name ="price4" id="price4" placeholder="price4" [(ngModel)]="price4"><br>
   </div>
-    <h3>Cold Beverages</h3>
-  <label>item1</label><br>
+
+  <label>item5</label><br>
   <div class="items">
     <input type = "text" name ="item5" id="item5" placeholder="item5" [(ngModel)]="item5"><div class="spacer"></div><input type = "text" name ="price5" id="price5" placeholder="price5" [(ngModel)]="price5"><br>
   </div>
-  <label>item2</label><br>
+  <h3>Cold Beverages</h3>
+  <label>item1</label><br>
   <div class="items">
     <input type = "text" name ="item6" id="item6" placeholder="item6" [(ngModel)]="item6"><div class="spacer"></div><input type = "text" name ="price6" id="price6" placeholder="price6" [(ngModel)]="price6"><br>
   </div>
-  <label>item3</label><br>
+  <label>item2</label><br>
   <div class="items">
     <input type = "text" name ="item7" id="item7" placeholder="item7" [(ngModel)]="item7"><div class="spacer"></div><input type = "text" name ="price7" id="price7" placeholder="price7" [(ngModel)]="price7"><br>
   </div>
-  <label>item4</label><br>
+  <label>item3</label><br>
   <div class="items">
     <input type = "text" name ="item8" id="item8" placeholder="item8" [(ngModel)]="item8"><div class="spacer"></div><input type = "text" name ="price8" id="price8" placeholder="price8" [(ngModel)]="price8"><br>
   </div>
-  <label>item5</label><br>
+  <label>item4</label><br>
   <div class="items">
     <input type = "text" name ="item9" id="item9" placeholder="item9" [(ngModel)]="item9"><div class="spacer"></div><input type = "text" name ="price9" id="price9" placeholder="price9" [(ngModel)]="price9"><br>
   </div>
-  <label>item6</label><br>
+  <label>item5</label><br>
   <div class="items">
     <input type = "text" name ="item10" id="item10" placeholder="item10" [(ngModel)]="item10"><div class="spacer"></div><input type = "text" name ="price10" id="price10" placeholder="price10" [(ngModel)]="price10"><br>
   </div>
@@ -87,7 +104,10 @@
   <div class="items">
     <input type = "text" name ="item21" id="item21" placeholder="item21" [(ngModel)]="item21"><div class="spacer"></div><input type = "text" name ="price21" id="price21" placeholder="price21" [(ngModel)]="price21">
   </div>
-    
+  <label>item12</label><br>
+  <div class="items">
+    <input type = "text" name ="item22" id="item22" placeholder="item22" [(ngModel)]="item22"><div class="spacer"></div><input type = "text" name ="price22" id="price22" placeholder="price22" [(ngModel)]="price22">
+  </div>
 </form>
 <br>
 <div class="center-align" *ngIf="isLoggednIn"><button mat-raised-button color="primary" (click)="submitmenudata();">Submit</button></div>

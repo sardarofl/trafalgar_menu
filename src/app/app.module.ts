@@ -18,7 +18,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterializeModule } from "angular2-materialize";
 
 //materialize imports
-import { MatButtonModule, MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatCardModule, MatInputModule, MatSnackBar, MatSnackBarModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AdddataService } from './services/adddata.service';
 import { HttpHeaders,HttpClient, HttpClientModule } from 'node_modules/@angular/common/http';
@@ -56,6 +56,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatCardModule,
     MatInputModule,
+    MatSnackBarModule,
     FormsModule,
     HttpModule,
     HttpClientModule

@@ -1,21 +1,57 @@
 .grid_layout{
     display: grid;
     grid-template-columns: 2fr 5fr;
-    grid-auto-rows: minmax(90px);
+    
 }
 
 .hotbeverages{
-    max-height:40vh;
+    position: fixed;
+    margin-left: 60px;
+    margin-top: 159px;
+    min-width: 988px;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 36px;
 }
 .foodandsnacks{
-    height:100vh;
+    position: fixed;
+    margin-left: 1082px;
+    margin-top: 159px;
+    min-width: 803px;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 34px;
    }
 .coldbeverages{
-    margin-top:20px;
-    max-height:60vh;
+    margin-left: 60px;
+    margin-top: 613px;
+    position: fixed;
+    min-width: 988px;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 36px;
 }
 
-.titlebox{
+.left{
+    text-align: left;
+    margin-left:20px;
+}
+
+.right{
+    text-align: right;
+    margin-right:20px;
+}
+
+table, th, td
+{
+
+  border-bottom: 0px solid #cdd0d4 !important;
+}
+table
+{
+
+}
+/* .titlebox{
     background-image: linear-gradient(#0759a1,#307cc0);
   color:whitesmoke;
   font-size:3.0em;
@@ -23,21 +59,21 @@
   text-align: center;
     margin:10px;
 
-}
+} */
 
-.table_hotbeverages{
+/* .table_hotbeverages{
     width:98%;
     text-align: center;
     font-size:2.0vw;
     margin:10px;
     font-weight: 500;
-}
-tr:nth-child(even) {
+} */
+/* tr:nth-child(even) {
     background-color: #ffdf84;
     font-weight: 500;
 }
 tr:nth-child(odd) {
     background-color: #fff8e5;
     font-weight: 500;
-}
+} */
 
